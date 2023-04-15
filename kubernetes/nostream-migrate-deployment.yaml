@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: nostream-migrate
+  name: nostream-migrate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: nostream-migrate
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/nostream: "true"
+        io.kompose.service: nostream-migrate
+    spec:
+      containers:
+        - command:
+            - sh
+            - -c
+            - cd code && npm install --no-save --quiet knex@2.4.0 pg@8.8.0 && npx knex migrate:latest
+          env:
+            - name: DB_HOST
+              value: nostream-db
+            - name: DB_NAME
+              value: nostr_ts_relay
+            - name: DB_PASSWORD
+              value: nostr_ts_relay
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              value: nostr_ts_relay
+          image: node:18-alpine3.16
+          name: nostream-migrate
+          resources: {}
+      restartPolicy: Always
+status: {}
