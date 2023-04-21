@@ -1,0 +1,8 @@
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres
+ContainerName=nostream-db
+Environment=POSTGRES_DB=nostr_ts_relay POSTGRES_USER=nostr_ts_relay POSTGRES_PASSWORD=nostr_ts_relay
+Network=nostream.network
