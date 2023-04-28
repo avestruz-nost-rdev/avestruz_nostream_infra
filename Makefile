@@ -18,36 +18,6 @@ cp-systemd:
 reload:
 	systemctl --user daemon-reload
 
-.PHONY: start-db
-## start-db: Start the postgres container 
-start-db:
-	systemctl --user start nostream-db.service
-
-.PHONY: stop-db
-## stop-db: Start the postgres container 
-stop-db:
-	systemctl --user stop nostream-db.service
-
-.PHONY: status-db
-## status-db: Start the postgres container 
-status-db:
-	systemctl --user status nostream-db.service
-
-.PHONY: start-pgadmin
-## start-pgadmin: Start the postgres container 
-start-pgadmin:
-	systemctl --user start nostream-pgadmin.service
-
-.PHONY: stop-pgadmin
-## stop-pgadmin: Start the postgres container 
-stop-pgadmin:
-	systemctl --user stop nostream-pgadmin.service
-
-.PHONY: status-pgadmin
-## status-pgadmin: Start the postgres container 
-status-pgadmin:
-	systemctl --user status nostream-pgadmin.service
-
 .PHONY: help
 ## help: Prints this help message
 help:

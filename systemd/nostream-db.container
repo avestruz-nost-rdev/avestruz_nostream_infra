@@ -1,9 +1,0 @@
-[Install]
-WantedBy=default.target
-
-[Container]
-Image=docker.io/library/postgres:14
-ContainerName=nostream-db
-Volume=nostream-db.volume:/var/lib/postgresql/data:Z
-Environment=POSTGRES_DB=nostr_ts_relay POSTGRES_USER=nostr_ts_relay POSTGRES_PASSWORD=nostr_ts_relay
-Network=nostream.network
