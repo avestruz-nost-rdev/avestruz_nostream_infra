@@ -1,9 +1,0 @@
-[Install]
-WantedBy=default.target
-
-[Container]
-Image=docker.io/dpage/pgadmin4:latest
-ContainerName=nostream-pgadmin
-PublishPort=9876:80
-Environment=PGADMIN_DEFAULT_EMAIL=admin@foo.com PGADMIN_DEFAULT_PASSWORD=Passw0rd
-Network=nostream.network
